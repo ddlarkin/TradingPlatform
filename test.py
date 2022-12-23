@@ -1,25 +1,21 @@
 
-import mariadb
 
+import smtplib, ssl
+from email.message import EmailMessage
 
-db = mariadb.connect(
-    user="root",
-    password="Inuvik",
-    host="localhost",
-    port=3306,
-    database="stockSuggestionInfo"
+port = 465  # For SSL
+smtp_server = "smtp.gmail.com"
+sender_email = "tradingplatform102"  # Enter your address
+receiver_email = "d4kh@bdec.nt.ca"  # Enter receiver address
+password = "apdhkslefqzzpvav"
 
-)
+msg = EmailMessage()
+msg.set_content("Hello Underworld!")
+msg['Subject'] = "Hello Underworld from Python Gmail!"
+msg['From'] = sender_email
+msg['To'] = receiver_email
 
-myCursor = db.cursor(buffered=True)
-myCursor.execute("USE userinfo;")
-
-input = 'fDare'
-
-myCursor.execute(f"SELECT username FROM userlogininfo WHERE EXISTS (SELECT username FROM userlogininfo WHERE username = '{input}')")
-result = myCursor.fetchall()
-print(result)
-if len(result) == 0:
-    print("False")
-else:
-    print("True")
+context = ssl.create_default_context()
+with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+    server.login(sender_email, password)
+    server.send_message(msg, from_addr=sender_email, to_addrs=receiver_email)

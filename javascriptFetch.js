@@ -1,7 +1,7 @@
 
 
 
-var inputText = '[1, "dLark", "4567"]'
+var inputText = '[1, "dLark", "4567", "dasasdas@gmail.com"]' //0 means I want to login, 1 means create account
 var arr =[];
 
 async function getData(inputText){

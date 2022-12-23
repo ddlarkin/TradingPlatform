@@ -9,8 +9,17 @@ loginServer = Flask(__name__)
 def getData(userInfo):
     userInfo = json.loads(userInfo)
     print(userInfo)
-    currentUser = User(userInfo[1], userInfo[2])
-    return json.dumps(currentUser.main(loginAttempt=userInfo[0]))
+
+    if userInfo[0] == 0:
+        currentUser = User(userInfo[1], userInfo[2])
+        return json.dumps(currentUser.checkAccount())
+    elif userInfo[0] == 1:
+        try:
+            currentUser = User(userInfo[1], userInfo[2], userInfo[3])
+            return json.dumps(currentUser.createAccount())
+        except IndexError:
+            return json.dumps("Error in input: IndexError")
+    elif userInfo[0] == 2:
 
 
 if __name__ == "__main__":
