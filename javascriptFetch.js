@@ -1,11 +1,11 @@
 
 
 
-var inputText = "var"
+var inputText = '[0, "fDare", "0123"]'
 var arr =[];
 
 async function getData(inputText){
-    return fetch(`http://127.0.0.1:5000/searchRecommendations/${inputText}`)
+    return fetch(`http://127.0.0.1:5000/loginData/${inputText}`)
         .then((response)=>response.text())
         .then((data)=>{return processResults(data)});
 }
@@ -19,7 +19,7 @@ async function testFunc(){
 
 function processResults(data){
     data = JSON.parse(data)
-    return data[0]
+    return data
 }
 
 
