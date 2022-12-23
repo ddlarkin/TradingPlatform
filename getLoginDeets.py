@@ -10,7 +10,6 @@ def getData(userInfo):
     userInfo = json.loads(userInfo)
     print(userInfo)
     currentUser = User(userInfo[1], userInfo[2])
-    print(currentUser.main(loginAttempt=userInfo[0]))
     return json.dumps(currentUser.main(loginAttempt=userInfo[0]))
 
 

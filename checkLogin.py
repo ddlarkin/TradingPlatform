@@ -45,15 +45,15 @@ class User:
             return "Account does not exist."
 
     def createAccount(self):
-        if not self.checkUsername():
-            pass
-            # Create account here
+        if self.checkUsername():
+            return "Account already exists."
         else:
-            pass
-            # return account already exists
+            myCursor.execute(f"INSERT INTO userlogininfo (username, password) values ('{self.username}', '{self.password}');")
+            db.commit()
+            return "Account Created."
 
     def main(self, loginAttempt):
         if loginAttempt == 0:
             return self.checkAccount()
         elif loginAttempt == 1:
-            self.createAccount()
+            return self.createAccount()
