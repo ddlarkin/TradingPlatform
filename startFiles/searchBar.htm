@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="searchBarStyle.css">
+  <script src="searchBarScript.js"></script>
+</head>
+<body>
+    
+    <h1> Input Ticker</h1>
+    <form autocomplete="off" style="width:300px;">
+      <div class="autocomplete">
+        <input type="text" placeholder="Ticker" id="tickerSearch">
+      </div>
+      <input type="submit" id="submitBox">
+
+    </form>
+
+    <script>
+      autocomplete(document.getElementById("tickerSearch"));
+    </script>
+  
+
+</body>
+</html>
