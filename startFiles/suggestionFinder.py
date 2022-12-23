@@ -24,6 +24,7 @@ def suggestions(search='A', noSuggestions=5):
     possibleAnswers = myCursor.fetchall()
     possibleAnswers.sort(key=lambda x: x[2]*x[3])
     possibleAnswers.reverse()
+    print(search)
 
     if len(possibleAnswers) < noSuggestions:
         noSuggestions = len(possibleAnswers)
@@ -31,7 +32,7 @@ def suggestions(search='A', noSuggestions=5):
     suggestionList = []
     for i in range(noSuggestions):
         suggestionList.append([possibleAnswers[i][0], possibleAnswers[i][1]])
-
+    print(json.dumps(suggestionList))
     return json.dumps(suggestionList)
 
 
