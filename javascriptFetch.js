@@ -1,7 +1,7 @@
 
 
 
-var inputText = "Name"
+var inputText = "var"
 var arr =[];
 
 async function getData(inputText){
